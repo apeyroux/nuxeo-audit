@@ -25,6 +25,7 @@ import           Data.String
 import qualified Data.Text                     as T
 import           Data.Time.Calendar             ( Day )
 import           Data.Time.LocalTime
+import Data.Time.Format
 import           Data.Word                      ( Word16 )
 import           GHC.Generics
 
@@ -94,7 +95,9 @@ data Audit = Audit {
 instance ToRecord Audit
 
 instance ToField LocalTime where
-  toField (LocalTime d _) = BSC8.pack (show d)
+  toField lt = BSC8.pack $ formatTime dtl "%d-%m-%Y %T" lt 
+    where
+      dtl = defaultTimeLocale
 
 instance ToJSON Audit where
   toJSON (Audit
