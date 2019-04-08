@@ -38,6 +38,7 @@ auditRow =
     <*> Decoders.nullableColumn Decoders.text
     <*> Decoders.nullableColumn Decoders.text
     <*> Decoders.nullableColumn Decoders.text
+    <*> Decoders.nullableColumn Decoders.text
     <*> Decoders.column Decoders.text
 
 selectAuditLogStatement :: Statement.Statement DiffTime [Audit]
@@ -49,6 +50,7 @@ selectAuditLogStatement = Statement.Statement sql encoder decoder True
          \ log_event_date, \
          \ log_event_id, \
          \ log_event_category, \
+         \ log_event_comment, \
          \ log_doc_life_cycle, \
          \ log_doc_path, \
          \ log_doc_uuid, \

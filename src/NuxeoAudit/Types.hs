@@ -86,6 +86,7 @@ data Audit = Audit {
   , auditEventDate :: LocalTime
   , auditEventId :: T.Text
   , auditEventCategory :: Maybe T.Text
+  , auditEventComment :: Maybe T.Text
   , auditDocLifeCycle :: Maybe T.Text
   , auditDocPath :: Maybe T.Text
   , auditDocUuid :: Maybe T.Text
@@ -106,6 +107,7 @@ instance ToJSON Audit where
           eventdate
           eventid
           eventcategory
+          eventcomment
           doclifecyle
           docpath
           docuuid
@@ -114,6 +116,7 @@ instance ToJSON Audit where
                           , "eventdate" .= eventdate
                           , "eventid" .= eventid
                           , "eventcategory" .= eventcategory
+                          , "eventcomment" .= eventcomment
                           , "doclifecyle" .= doclifecyle
                           , "docpath" .= docpath
                           , "docuuid" .= docuuid
